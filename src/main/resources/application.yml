@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: logs
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      config:
+        enabled: true
+        name: logs
+        host: localhost
+        port: 8500
+        data-key: application.yml
+        format: yaml
+        default-context: defaults
+      retry:
+        enabled: true
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
